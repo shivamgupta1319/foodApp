@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+
+  fooddb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: food
+      POSTGRES_PASSWORD: shivam13
+      POSTGRES_DB: fooddb
+    ports: 
+     - 5432:5432
