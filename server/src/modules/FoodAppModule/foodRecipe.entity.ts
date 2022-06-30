@@ -32,4 +32,11 @@ export class FoodRecipe extends Model<FoodRecipe> {
     })
     original: string;
 
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    instructions: string;   
+        
+
 }

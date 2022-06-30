@@ -4,4 +4,5 @@ export class foodDto {
     readonly consistency: string;
     readonly name: string;
     readonly original: string;
+    readonly instructions : string;
 }

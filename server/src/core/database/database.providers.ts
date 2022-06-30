@@ -25,7 +25,7 @@ export const databaseProviders = [{
         }
         const sequelize = new Sequelize(config);
         sequelize.addModels([FoodRecipe]);
-        await sequelize.sync();
+        await sequelize.sync({force: true});
         try {
          await sequelize.authenticate();
          console.log('Connection has been established successfully.');

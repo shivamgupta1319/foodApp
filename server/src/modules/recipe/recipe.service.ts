@@ -42,10 +42,11 @@ export class RecipeService {
         const data = await response.data;
         const result = {
             aisle: data.extendedIngredients[0].aisle,
-            url: data.extendedIngredients[0].image,
+            url: data.image,
             consistency: data.extendedIngredients[0].consistency,
-            name: data.extendedIngredients[0].name,
-            original: data.extendedIngredients[0].original
+            name: data.title,
+            original: data.extendedIngredients[0].original,
+            instructions : data.instructions
         }
         console.log (data)
         
