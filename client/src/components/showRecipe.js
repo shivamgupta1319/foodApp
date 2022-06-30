@@ -16,7 +16,7 @@ import Typography from '@mui/material/Typography';
 
 export default function RecipeCard(props) {
 
-    const {aisle,consistency,name,original} = props.recipeData;
+    const {aisle,consistency,name,instructions} = props.recipeData;
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
@@ -30,7 +30,7 @@ export default function RecipeCard(props) {
           Consistency  =   {consistency}
         </Typography>
         <Typography variant="h6" component="div"   gutterBottom>
-          Stating  =   {original}
+          instructions = {instructions}
         </Typography>
         
         
