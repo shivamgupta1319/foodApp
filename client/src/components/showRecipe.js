@@ -30,7 +30,7 @@ export default function RecipeCard(props) {
           Consistency  =   {consistency}
         </Typography>
         <Typography variant="h6" component="div"   gutterBottom>
-          instructions = {instructions}
+          instructions =<br></br> {instructions}
         </Typography>
         
         
