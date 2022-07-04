@@ -33,7 +33,7 @@ export class FoodRecipe extends Model<FoodRecipe> {
     original: string;
 
     @Column({
-        type: DataType.STRING,
+        type: DataType.STRING(5000),
         allowNull: false,
     })
     instructions: string;   

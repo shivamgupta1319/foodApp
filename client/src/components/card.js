@@ -1,26 +1,33 @@
 import { Box, Image } from '@chakra-ui/react'
-import RecipeCard from './showRecipe';
-import { useState } from 'react';
+
+import { useNavigate } from "react-router-dom";
+
 
 
 
 
 
 const req = require('axios');
+
 export default function BasicCard(props) {
   const { results } = props.recipeDetails;
   // const [id, setid] = useState('')
-
+  const navigate = useNavigate()
   console.log(results);
 
-  const [data, setData] = useState({})
-  const changePage = (id) => {
-    req.post('http://127.0.0.1:5000/recipe/' + id).then((response) => {
-      setData(response.data);
+  // const [data, setData] = useState({})
+  const changePage =async (id) => {
+    const response = await req.post('http://127.0.0.1:5000/recipe/' + id);
+      const data = await response.data;
+
+      console.log('data',data);
+      navigate('/details',{
+        state:data,
+      })
       console.log(response.data);
 
-    })
   }
+  
 
   return (
     <div>
@@ -30,7 +37,7 @@ export default function BasicCard(props) {
              <Image
               src={result.image}
               alt={result.title}
-              
+              title={result.title}
               onClick={() => { changePage(result.id) }} // selects or unselects the image?
             />
               
@@ -38,7 +45,6 @@ export default function BasicCard(props) {
           ))
       }
       </Box>
-      {Object.keys(data).length > 0 && <RecipeCard recipeData={data} />}
   
     </div>
   );
