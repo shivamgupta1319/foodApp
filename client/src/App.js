@@ -23,13 +23,13 @@ function App() {
   }
 
   return (
-    <VStack align='center' >
+    <VStack align='center' paddingLeft={10} paddingRight={10} paddingTop={20} backgroundColor='#4FD1C5' height='100vh'>
       
     
-      <Heading>Food Recipe</Heading>
+      <Heading fontSize={70} fontWeight='bold' color='#9B2C2C' fontFamily={5}>Food Recipe</Heading>
       <br></br><br></br>
       <Input size='lg' variant='outline' type="text" onChange={fun} value={recipe_name} name='recipe_name' placeholder='Enter Recipe Name' /><br></br><br></br><br></br>
-      <Button colorScheme='teal' size='lg' type='submit' value={"submit"} onClick={() => {handleSubmit()}} >SUBMIT</Button>
+      <Button colorScheme='red' size='lg' type='submit' value={"submit"} onClick={() => {handleSubmit()}} >SEARCH</Button>
     
     <br></br><br></br>
       { Object.keys(data).length > 0 && <BasicCard key={data.totalResults} recipeDetails={data}/>}

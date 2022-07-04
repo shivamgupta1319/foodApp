@@ -8,7 +8,7 @@ export function RecipeCard(props) {
   console.log('data',data);
   const {aisle,consistency,name,instructions,url} = data.state;
   return (
-    <VStack paddingTop={10} >
+    <VStack paddingTop={10} backgroundColor='#4FD1C5' >
         <Image src={url}  /> 
         <Container maxW='md' align = 'center' fontSize={26} color='black'>
           Recipe Name =   {name}

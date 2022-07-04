@@ -34,15 +34,21 @@ export default function BasicCard(props) {
       <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
         {
           results.map((result) => (
-             <Image
+            <div>
+            
+              <Image
               src={result.image}
               alt={result.title}
               title={result.title}
-              onClick={() => { changePage(result.id) }} // selects or unselects the image?
-            />
-              
+              onClick={() => { changePage(result.id) }} />
+              <h1 align = 'center'>{result.title}</h1>
+              <br></br>
+            </div>
+            
+             
             
           ))
+          
       }
       </Box>
   
