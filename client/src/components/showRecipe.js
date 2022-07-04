@@ -1,41 +1,29 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-
-import CardContent from '@mui/material/CardContent';
-
-import Typography from '@mui/material/Typography';
-
-// const bull = (
-//   <Box
-//     component="span"
-//     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-//   >
-//     •
-//   </Box>
-// );
+import { Container, Box } from '@chakra-ui/react'
+import {VStack} from '@chakra-ui/layout';
 
 export default function RecipeCard(props) {
 
-    const {aisle,consistency,name,instructions} = props.recipeData;
+  const {aisle,consistency,name,instructions} = props.recipeData;
+  console.log(instructions);
   return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div"   gutterBottom>
-          Recipe Name =   {name}
-        </Typography>
-        <Typography variant="h6" component="div"   gutterBottom>
-            Items  =   {aisle}
-        </Typography>
-        <Typography variant="h6" component="div"   gutterBottom>
-          Consistency  =   {consistency}
-        </Typography>
-        <Typography variant="h6" component="div"   gutterBottom>
-          instructions =<br></br> {instructions}
-        </Typography>
-        
-        
-      </CardContent>
+    <VStack >
       
-    </Card>
+        <Container maxW='md' bg='blue.600' color='white'>
+          Recipe Name =   {name}
+        </Container>
+        <Container maxW='md' bg='blue.600' color='white'>
+            Items  =   {aisle}
+        </Container>
+        <Container maxW='md' bg='blue.600' color='white'>
+          Consistency  =   {consistency}
+        </Container>
+        <Container maxW='2xl' bg='blue.600' centerContent>
+          <Box padding='4' bg='blue.400' color='black' maxW='md'>
+          instructions =<br></br> {instructions}
+          </Box>
+        </Container>
+      
+    </VStack>
   );
 }
