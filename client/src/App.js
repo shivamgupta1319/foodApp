@@ -1,7 +1,9 @@
 
-import './App.css';
+
 import { useState } from 'react'
 import BasicCard from './components/card';
+import {VStack} from '@chakra-ui/layout';
+import { Input, Button , Heading} from '@chakra-ui/react'
 const req = require('axios');
 function App() {
 
@@ -21,16 +23,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-
-        <h1>Food Recipe</h1>
-        <input type="text" onChange={fun} value={recipe_name} name='recipe_name' placeholder='Enter Recipe Name' /><br></br><br></br><br></br>
-        <button className="button-29" role="button" type='submit' value={"submit"} onClick={() => {handleSubmit()}} >submit</button>
-      </header>
+    <VStack align='center' >
+      
+    
+      <Heading>Food Recipe</Heading>
       <br></br><br></br>
+      <Input size='lg' variant='outline' type="text" onChange={fun} value={recipe_name} name='recipe_name' placeholder='Enter Recipe Name' /><br></br><br></br><br></br>
+      <Button colorScheme='teal' size='lg' type='submit' value={"submit"} onClick={() => {handleSubmit()}} >SUBMIT</Button>
+    
+    <br></br><br></br>
       { Object.keys(data).length > 0 && <BasicCard key={data.totalResults} recipeDetails={data}/>}
-    </div>
+    </VStack>
 
 
   );
