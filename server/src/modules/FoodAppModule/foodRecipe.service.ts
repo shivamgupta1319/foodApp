@@ -4,5 +4,5 @@ import { FoodRecipe } from './foodRecipe.entity';
 
 @Injectable()
 export class foodService {
-    constructor(@Inject(FOOD_REPOSITORY) private readonly userRepository: typeof FoodRecipe) { }
+    constructor(@Inject(FOOD_REPOSITORY) private readonly foodRepository: typeof FoodRecipe) { }
 }
