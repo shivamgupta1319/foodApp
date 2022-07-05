@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { FOOD_REPOSITORY } from 'src/core/database/constants';
 import  { FoodRecipe } from 'src/modules/FoodAppModule/foodRecipe.entity';
-import axios from 'axios'
+import axios from 'axios';
 
 @Injectable()
 export class RecipeService {
@@ -13,7 +13,7 @@ export class RecipeService {
     public async find(recipeName: string): Promise<any>{
         
         const key = this.configService.get<string>('API_KEY')
-        const axios = require("axios"); 
+        // const axios = require("axios"); 
         const options = {
         method: 'get',
         url: 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+key,
@@ -32,7 +32,7 @@ export class RecipeService {
     public async create(id: number){
         const key = this.configService.get<string>('API_KEY')
         console.log (key)
-        const axios = require("axios"); 
+        // const axios = require("axios"); 
         const options = {
         method: 'get',
         url: 'https://api.spoonacular.com/recipes/'+id+'/information?apiKey='+key
