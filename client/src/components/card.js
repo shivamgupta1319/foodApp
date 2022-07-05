@@ -25,7 +25,7 @@ export default function BasicCard(props) {
       <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
         {
           results.map((result) => (
-            <VStack>
+            <VStack margin={10}>
             
               <Image
               src={result.image}
