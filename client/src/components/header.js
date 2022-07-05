@@ -3,7 +3,7 @@ import BasicCard from './card';
 import { VStack } from '@chakra-ui/layout';
 import { Input, Button, Heading, FormControl } from '@chakra-ui/react'
 import { useState } from 'react'
-import { BACKGROUNDCOLOR, BUTTONCOLOR, HEADERCOLOR, MARGINBOTTOM } from '../constant/constant.header';
+import { BUTTONCOLOR, HEADERCOLOR, MARGINBOTTOM } from '../constant/constant.header';
 import { recipeData } from '../api/api.header';
 
 // const req = require('axios');
