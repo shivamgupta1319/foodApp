@@ -1,49 +1,39 @@
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Heading, Image, VStack } from '@chakra-ui/react'
 
 import { useNavigate } from "react-router-dom";
+import { recipeDetail } from '../api/api.card';
+import { RECIPEDETAILS } from '../constant/constant.card';
 
-
-
-
-
-
-const req = require('axios');
 
 export default function BasicCard(props) {
   const { results } = props.recipeDetails;
-  // const [id, setid] = useState('')
   const navigate = useNavigate()
-  console.log(results);
+  
 
-  // const [data, setData] = useState({})
   const changePage =async (id) => {
-    const response = await req.post('http://127.0.0.1:5000/recipe/' + id);
-      const data = await response.data;
-
+      const data = await recipeDetail(id);
       console.log('data',data);
-      navigate('/details',{
+      navigate(RECIPEDETAILS,{
         state:data,
       })
-      console.log(response.data);
 
   }
   
 
   return (
-    <div>
+    <VStack>
       <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
         {
           results.map((result) => (
-            <div>
+            <VStack>
             
               <Image
               src={result.image}
               alt={result.title}
-              title={result.title}
               onClick={() => { changePage(result.id) }} />
-              <h1 align = 'center'>{result.title}</h1>
-              <br></br>
-            </div>
+              <Heading align = 'center' fontSize='18' >{result.title}</Heading>
+              
+            </VStack>
             
              
             
@@ -52,6 +42,6 @@ export default function BasicCard(props) {
       }
       </Box>
   
-    </div>
+    </VStack>
   );
 }

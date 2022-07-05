@@ -5,9 +5,9 @@ import { RecipeService } from './recipe.service';
 export class RecipeController {
     constructor(private readonly recipeService: RecipeService) {}
 
-    @Get(":recipe_name")
-    public getrecipe(@Param('recipe_name') recipe_name) {
-        return this.recipeService.find(recipe_name);
+    @Get(":recipeName")
+    public getrecipe(@Param('recipeName') recipeName) {
+        return this.recipeService.find(recipeName);
     }
 
     @Post(":id")

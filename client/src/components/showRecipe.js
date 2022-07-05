@@ -2,27 +2,28 @@ import * as React from 'react';
 import { Container, Box, Image} from '@chakra-ui/react'
 import {VStack} from '@chakra-ui/layout';
 import { useLocation } from 'react-router-dom';
+import { BACKGROUNDCOLOR, TEXTCOLOR, TEXTFONT } from '../constant/constant.showRecipe';
 
 export function RecipeCard(props) {
   const data = useLocation()
-  console.log('data',data);
+  console.log('data---------',data);
   const {aisle,consistency,name,instructions,url} = data.state;
   return (
-    <VStack paddingTop={10} backgroundColor='#4FD1C5' >
+    <VStack pt={10} bg={BACKGROUNDCOLOR} align = 'center'>
         <Image src={url}  /> 
-        <Container maxW='md' align = 'center' fontSize={26} color='black'>
+        <Container maxW='md'  fontSize={26} color={TEXTCOLOR}>
           Recipe Name =   {name}
         </Container>
-        <Container maxW='md' align = 'center' fontSize={22} color='black'>
+        <Container maxW='md'  fontSize={TEXTFONT} color={TEXTCOLOR}>
             Items  =   {aisle}
         </Container>
-        <Container maxW='md' align = 'center' fontSize={22} color='black'>
+        <Container maxW='md' fontSize={TEXTFONT} color={TEXTCOLOR}>
           Consistency  =   {consistency}
         </Container>
         <br></br><br></br>
-        <Container maxW='2xl' fontSize={22} centerContent>
+        <Container maxW='2xl' fontSize={TEXTFONT} centerContent>
           instructions :-
-          <Box padding='4'  color='black' maxW='md'>
+          <Box padding='4'  color={TEXTCOLOR} maxW='md'>
           <br></br> {instructions}
           </Box>
         </Container>

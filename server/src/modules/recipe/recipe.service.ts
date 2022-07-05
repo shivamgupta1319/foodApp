@@ -10,14 +10,14 @@ export class RecipeService {
 
     
      
-    public async find(recipe_name: string): Promise<any>{
+    public async find(recipeName: string): Promise<any>{
         
         const key = this.configService.get<string>('API_KEY')
         const axios = require("axios"); 
         const options = {
         method: 'get',
         url: 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+key,
-        params: {query: recipe_name}
+        params: {query: recipeName}
         };
 
         const response = await axios.request(options)
