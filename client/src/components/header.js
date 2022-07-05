@@ -23,7 +23,7 @@ export default function Header() {
   }
 
   return (
-    <VStack pl={10} pr={10} pt={20} bg={BACKGROUNDCOLOR} >
+    <VStack pl={10} pr={10} pt={20}>
       <form onSubmit={(e) => handleSubmit(e)} >
         <FormControl align="center" isRequired marginBlock="10%">
           <Heading marginBottom={MARGINBOTTOM} fontSize={70} fontWeight='bold' color={HEADERCOLOR} align='center'>Food Recipe</Heading>
