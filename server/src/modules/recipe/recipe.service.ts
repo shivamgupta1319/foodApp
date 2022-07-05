@@ -1,12 +1,12 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { FOOD_REPOSITORY } from 'src/core/database/constants';
-import { FoodRecipe } from 'src/modules/FoodAppModule/foodRecipe.entity';
-
+import  { FoodRecipe } from 'src/modules/FoodAppModule/foodRecipe.entity';
+import axios from 'axios'
 
 @Injectable()
 export class RecipeService {
-    constructor(private configService: ConfigService,@Inject(FOOD_REPOSITORY) private readonly foodrecipe: typeof FoodRecipe){}
+    constructor(private configService: ConfigService,@Inject(FOOD_REPOSITORY) private readonly foodrecipe:  typeof FoodRecipe){}
 
     
      
