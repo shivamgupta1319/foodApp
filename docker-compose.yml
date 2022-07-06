@@ -18,11 +18,11 @@ services:
         build:
             context: ./client
             dockerfile: Dockerfile
-        image: react
+        image: client
         ports:
             - "3000:3000"
         volumes:
-            - ./client:/app
+            - ./client:/src
   backend:
         container_name: server
         build:
@@ -37,4 +37,4 @@ services:
         networks:
             - default
         volumes:
-            - ./server:/app
+            - ./server:/src
