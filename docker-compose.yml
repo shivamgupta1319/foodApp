@@ -32,5 +32,9 @@ services:
         ports:
             - "5000:5000"
         
+        depends_on:
+            - fooddb
+        networks:
+            - default
         volumes:
             - ./server:/app
