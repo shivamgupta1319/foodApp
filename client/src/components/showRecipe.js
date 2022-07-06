@@ -17,14 +17,14 @@ export function RecipeCard(props) {
         <Container maxW='md'  fontSize={TEXTFONT} color={TEXTCOLOR}>
             Items  =   {aisle}
         </Container>
-        <Container maxW='md' fontSize={TEXTFONT} color={TEXTCOLOR}>
+        <Container marginBottom={10} maxW='md' fontSize={TEXTFONT} color={TEXTCOLOR}>
           Consistency  =   {consistency}
         </Container>
-        <br></br><br></br>
+        
         <Container maxW='2xl' fontSize={TEXTFONT} centerContent>
           instructions :-
           <Box padding='4'  color={TEXTCOLOR} maxW='md'>
-          <br></br> {instructions}
+          {instructions.replace(/(<([^>]+)>)/gi, "")}
           </Box>
         </Container>
       
