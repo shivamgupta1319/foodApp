@@ -1,5 +1,5 @@
 import { Box, Heading, Image, VStack } from '@chakra-ui/react'
-
+import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import { recipeDetail } from '../api/api.card';
 import { RECIPEDETAILS } from '../constant/constant.card';
