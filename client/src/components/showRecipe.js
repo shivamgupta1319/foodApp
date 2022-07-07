@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Container, Box, Image} from '@chakra-ui/react'
 import {VStack} from '@chakra-ui/layout';
 import { useLocation } from 'react-router-dom';

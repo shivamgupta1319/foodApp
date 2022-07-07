@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import BasicCard from './card';
 import { VStack } from '@chakra-ui/layout';
 import { Input, Button, Heading, FormControl } from '@chakra-ui/react'
