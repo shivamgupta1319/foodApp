@@ -7,6 +7,7 @@ export class RecipeController {
 
     @Get(":recipeName")
     public getrecipe(@Param('recipeName') recipeName) {
+        console.log(recipeName);
         return this.recipeService.find(recipeName);
     }
 
