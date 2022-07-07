@@ -1,57 +1,39 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { FOOD_REPOSITORY } from 'src/core/database/constants';
-import  { FoodRecipe } from 'src/modules/FoodAppModule/foodRecipe.entity';
-import axios from 'axios';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { RecipeModel } from './recipe.entity';
+import { getRecipeData, getRecipeDetails } from 'src/api/getRecipeData.api';
 
 @Injectable()
 export class RecipeService {
-    constructor(private configService: ConfigService,@Inject(FOOD_REPOSITORY) private readonly foodrecipe:  typeof FoodRecipe){}
+    @InjectRepository(RecipeModel) private readonly repository: Repository<RecipeModel>
+    constructor(private configService: ConfigService){}
 
-    
-     
+
+
     public async find(recipeName: string): Promise<any>{
         
-        const key = this.configService.get<string>('API_KEY')
-        // const axios = require("axios"); 
-        const options = {
-        method: 'get',
-        url: 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+key,
-        params: {query: recipeName}
-        };
-
-        const response = await axios.request(options)
-        const data = await response.data;
-        console.log (data)
-        
-
-        return await data
+        const key = this.configService.get<string>('API_KEY');
+        const data = await getRecipeData(recipeName,key);
+        return data
     }
 
 
     public async create(id: number){
         const key = this.configService.get<string>('API_KEY')
-        console.log (key)
-        // const axios = require("axios"); 
-        const options = {
-        method: 'get',
-        url: 'https://api.spoonacular.com/recipes/'+id+'/information?apiKey='+key
-        };
-
-        const response = await axios.request(options)
-        const data = await response.data;
-        const result = {
-            aisle: data.extendedIngredients[0].aisle,
-            url: data.image,
-            consistency: data.extendedIngredients[0].consistency,
-            name: data.title,
-            original: data.extendedIngredients[0].original,
-            instructions : data.instructions
-        }
-        console.log (data)
+        const data = await getRecipeDetails(id,key);
         
+        const recipe:RecipeModel = new RecipeModel();
+        recipe.aisle = data.extendedIngredients[0].aisle;
+        recipe.url = data.image,
+        recipe.consistency = data.extendedIngredients[0].consistency,
+        recipe.name = data.title,
+        recipe.original = data.extendedIngredients[0].original,
+        recipe.instructions = data.instructions
 
-        return await this.foodrecipe.create<FoodRecipe>(result);
+        return this.repository.save(recipe);
+        
     }         
 }
 
