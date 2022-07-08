@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Box, Image} from '@chakra-ui/react'
+import { Container, Box, Image, Spinner} from '@chakra-ui/react'
 import {VStack} from '@chakra-ui/layout';
 import { useLocation } from 'react-router-dom';
 import { BACKGROUNDCOLOR, TEXTCOLOR, TEXTFONT } from '../constant/constant.showRecipe';
@@ -16,7 +16,15 @@ export function RecipeCard(props) {
     
   );
  
-  if (isLoading) return 'Loading...'
+  if (isLoading) return <Spinner
+                          align="center"
+                          justifyContent='center'
+                          thickness='4px'
+                          speed='0.65s'
+                          emptyColor='gray.200'
+                          color='blue.500'
+                          size='xl'
+                        />
 
   if (error) return 'An error has occurred: ' + error
 
