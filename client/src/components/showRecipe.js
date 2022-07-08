@@ -10,9 +10,8 @@ export function RecipeCard(props) {
   const item = useLocation()
   const id = item.state
   console.log(item,typeof (id));
-  const { isLoading, error, data } = useQuery('id', async () => {
-     return await recipeDetail(id)
-  }
+  const { isLoading, error, data } = useQuery('id', () => 
+    recipeDetail(id)
     
   );
  

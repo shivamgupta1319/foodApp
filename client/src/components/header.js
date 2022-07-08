@@ -1,43 +1,44 @@
 import React from 'react';
 import BasicCard from './card';
 import { VStack } from '@chakra-ui/layout';
-import { Input, Button, Heading, FormControl } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Input, Button, Heading, FormControl, FormErrorMessage } from '@chakra-ui/react'
+
 import { BUTTONCOLOR, HEADERCOLOR, MARGINBOTTOM } from '../constant/constant.header';
 import { recipeData } from '../api/api.header';
 import { useForm } from "react-hook-form";
-
+import { useMutation } from 'react-query';
 
 export default function Header() {
-  const { register, handleSubmit } = useForm();
-  const [recipeName, setRecipeName] = useState('')
-  const [data, setData] = useState({})
-  
+  const { register,formState, handleSubmit } = useForm();
+
+
+  // const fun = (event) => {
+  //   setRecipeName(event.target.value);
+  // }
 
 
 
-  const fun = (event) => {
+  const {data: resData, mutate} = useMutation(recipeName => {
+    return recipeData(recipeName)
+  })
 
-    setRecipeName(event.target.value);
+  const submitForm = (data) => {
+     mutate(data.recipeName) 
   }
 
-  const submitForm = async (e) => {
-    e.preventDefault();
-    const data = await recipeData(recipeName)
-    setData(data);
-  }
 
   return (
     <VStack pl={10} pr={10} pt={20}>
-      <form onSubmit={(e) => handleSubmit(submitForm(e))} >
-        <FormControl align="center" isRequired marginBlock="10%">
+      <form onSubmit={handleSubmit(submitForm)}>
+        <FormControl align="center" isRequired marginBlock="10%" isInvalid={!!formState.errors.recipeName}>
           <Heading marginBottom={MARGINBOTTOM} fontSize={70} fontWeight='bold' color={HEADERCOLOR} align='center'>Food Recipe</Heading>
 
-          <Input {...register("recipeName", { required: true, maxLength: 20, type: 'text' })} marginBottom={MARGINBOTTOM} size='lg' variant='outline' onChange={fun} value={recipeName} name='recipeName' placeholder='Enter Recipe Name' />
+          <Input {...register("recipeName", { required: true, maxLength: 20, type: 'text' })} marginBottom={MARGINBOTTOM} size='lg' variant='outline' name='recipeName' placeholder='Enter Recipe Name' />
           <Button colorScheme={BUTTONCOLOR} size='lg' type='submit' value={"submit"} >SEARCH</Button>
+          <FormErrorMessage>h</FormErrorMessage>
         </FormControl>
-      </form>
-      {Object.keys(data).length > 0 && <BasicCard recipeDetails={data} />}
+        </form>
+      {resData && Object.keys(resData).length > 0 && <BasicCard recipeDetails={resData} />}
 
     </VStack>
   )
