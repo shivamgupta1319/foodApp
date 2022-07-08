@@ -25,12 +25,13 @@ export default function Header() {
     console.log(recipeName);
     e.preventDefault();
     const data = await recipeData(recipeName)
+    console.log(data);
     setData(data);
   }
 
   return (
     <VStack pl={10} pr={10} pt={20}>
-      <form onSubmit={(e) => handleSubmit(submitForm())} >
+      <form onSubmit={(e) => handleSubmit(submitForm(e))} >
         <FormControl align="center" isRequired marginBlock="10%">
           <Heading marginBottom={MARGINBOTTOM} fontSize={70} fontWeight='bold' color={HEADERCOLOR} align='center'>Food Recipe</Heading>
 
