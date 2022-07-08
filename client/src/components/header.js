@@ -13,13 +13,6 @@ import { schema } from '../schema/header.yupresolver';
 export default function Header() {
   const { register, handleSubmit } = useForm({resolver: yupResolver(schema),});
 
-
-  // const fun = (event) => {
-  //   setRecipeName(event.target.value);
-  // }
-
-
-
   const {data: resData, mutate} = useMutation(recipeName => {
     return recipeData(recipeName)
   })
