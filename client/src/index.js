@@ -3,8 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from './routes/route';
-import ScrollToTop from './routes/scrollToTop';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+
+
+const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -13,9 +19,9 @@ root.render(
     <ChakraProvider >
 
       <BrowserRouter>
-        <ScrollToTop>
+        <QueryClientProvider client={queryClient}>
           <AppRoutes/>
-        </ScrollToTop>
+        </QueryClientProvider>
       </BrowserRouter>
     </ChakraProvider>
 

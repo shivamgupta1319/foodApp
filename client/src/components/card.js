@@ -1,7 +1,7 @@
 import { Box, Heading, Image, VStack } from '@chakra-ui/react'
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import { recipeDetail } from '../api/api.card';
+
 import { RECIPEDETAILS } from '../constant/constant.card';
 
 
@@ -11,10 +11,9 @@ export default function BasicCard(props) {
   
 
   const changePage =async (id) => {
-      const data = await recipeDetail(id);
-      console.log('data',data);
+      // const data = await recipeDetail(id);
       navigate(RECIPEDETAILS,{
-        state:data,
+        state:id,
       })
 
   }

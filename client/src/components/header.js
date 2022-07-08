@@ -17,15 +17,13 @@ export default function Header() {
 
 
   const fun = (event) => {
-    console.log(event.target.value);
+
     setRecipeName(event.target.value);
   }
 
   const submitForm = async (e) => {
-    console.log(recipeName);
     e.preventDefault();
     const data = await recipeData(recipeName)
-    console.log(data);
     setData(data);
   }
 
