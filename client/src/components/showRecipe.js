@@ -17,6 +17,7 @@ export function RecipeCard(props) {
   );
  
   if (isLoading) return <Spinner
+                          position='center'
                           align="center"
                           justifyContent='center'
                           thickness='4px'
